@@ -1,0 +1,48 @@
+// OpenEnergyMonitor Skeleton Config
+// For use on emonPi running emonhub MQTT
+// Part of the openenergymonitor.org project
+
+// https://github.com/openhab/openhab/wiki/Explanation-of-Sitemaps
+
+sitemap default label="OpenEnergyMonitor"
+{
+
+	Frame label="emonPi" {
+		Text item=emonpi_ct1 icon="firstfloor"
+		Text item=emonpi_ct2 icon="firstfloor"
+		Text item=emonpi_vrms icon="energy"
+		Text item=emonpi_t1 icon="temperature"
+		Text item=emonpi_t2 icon="temperature"
+	}
+
+	Frame label="emonTH (node 19)" {
+	  Text item=emonth_t19 icon="temperature"
+		Text item=emonth_h19 icon="temperature"
+	}
+	
+	Frame label="emonTH (node 23)" {
+		Text item=emonth_t23  icon="temperature"
+		Text item=emonth_h23  icon="temperature"
+	}
+
+	Frame label="Control" {
+		Text label="LWRF Plug Control" icon="poweroutlet-uk"{
+			Frame label="Light Wave RF"{
+                Switch item=lwrf_all   label="All"           mappings=[OFF="All Off", ON="All On"]
+				Switch item=lwrf0      label="LWRF Plug 0"
+				Switch item=lwrf1      label="LWRF Plug 1"
+				Switch item=lwrf2      label="LWRF Plug 2"
+				Switch item=lwrf3      label="LWRF Plug 3"
+				Switch item=lwrf4      label="LWRF Plug 4"
+			}
+		}
+
+			Text label="ESP WiFi Relay" icon="fire-on"{
+				Switch item=relay1_http label="ESP8266 Relay 1 (HTTP)"
+				Switch item=relay1_mqtt label="ESP8266 Relay 1 (MQTT)"
+			}
+		}
+	}
+
+
+}
