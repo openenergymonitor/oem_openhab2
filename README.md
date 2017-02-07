@@ -10,6 +10,10 @@ OpenEnergyMonitor config for OpenHAB2: specifically for running on emonPi with M
 
 Taken from: http://docs.openhab.org/installation/linux.html
 
+**Install Java 8*
+
+*Java 8 is already installed on latest RasPi image, if it's not then:*
+
 ```
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/webupd8team-java.list
 echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/webupd8team-java.list
@@ -17,7 +21,11 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 sudo apt-get update
 sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default
+```
 
+**Intall OpenHAB**
+
+```
 wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -
 echo 'deb http://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list
 
