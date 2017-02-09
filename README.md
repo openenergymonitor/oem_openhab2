@@ -30,7 +30,7 @@ wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' 
 echo 'deb http://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list
 
 sudo apt-get update
-sudo apt-get install
+sudo apt-get install openhab2
 
 sudo systemctl start openhab2.service
 sudo systemctl status openhab2.service
