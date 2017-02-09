@@ -32,10 +32,10 @@ echo 'deb http://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/a
 sudo apt-get update
 sudo apt-get install openhab2
 
-sudo systemctl start openhab2.service
-sudo systemctl status openhab2.service
+sudo systemctl enable openhab2
 sudo systemctl daemon-reload
-sudo systemctl enable openhab2.service
+sudo systemctl start openhab2
+sudo systemctl status openhab2
 ```
 
 Openhabe should now be running, browse to http://emonpi:8080
