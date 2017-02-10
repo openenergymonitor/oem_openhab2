@@ -6,9 +6,9 @@ OpenEnergyMonitor config for OpenHAB2: specifically for running on emonPi with M
 
 ***
 
-## Install OpenHAB 
+## Install OpenHAB
 
-Taken from: http://docs.openhab.org/installation/linux.html
+Standard install instructions taken from: http://docs.openhab.org/installation/linux.html
 
 **Install Java 8*
 
@@ -38,9 +38,24 @@ sudo systemctl start openhab2
 sudo systemctl status openhab2
 ```
 
-Openhabe should now be running, browse to http://emonpi:8080
+Openhab should now be running, browse to http://emonpi:8080
 
-## Addons 
+## emonSD (emonPi) Specific Instructions
+
+emonSD runs teh root FS in read only (ro) mode. `var/log` is mounted in RAM as `tmpfs` and is not peristant between boots.
+
+### Create Logfile
+
+Add to `etc/rc.local`
+
+```
+mkdir /var/log/openhab2
+chown -R openhab:openhab /var/log/openhab2
+```
+
+
+
+## Addons
 
 Install addons via web interface UI
 
@@ -61,5 +76,3 @@ mosquitto.qos=2
 ```
 
 `mosquitto` is the name given to the mqtt broker
-
-
