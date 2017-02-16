@@ -46,13 +46,23 @@ emonSD runs teh root FS in read only (ro) mode. `var/log` is mounted in RAM as `
 
 ### Create Logfile
 
-Add to `etc/rc.local`
+Add to `/etc/rc.local`
 
 ```
 mkdir /var/log/openhab2
 chown -R openhab:openhab /var/log/openhab2
 ```
 
+### Mount /var/lib/openhab2 as tmpfs 
+
+Add to `/etc/rc.local`
+
+```
+if [ -d /var/lib/openhab2 ]; then
+   echo "mounting /var/lib/openhab2"
+   sudo mount -t tmpfs -o nodev,nosuid,size=40M,mode=1777 tmpfs /var/lib/openhab2
+fi
+```
 
 
 ## Addons
@@ -62,6 +72,7 @@ Install addons via web interface UI
 ### MQTT
 
 Install MQTT binding via the interface then edit
+
 
 `/etc/openhab2/services/mqtt.cfg`
 
@@ -76,3 +87,32 @@ mosquitto.qos=2
 ```
 
 `mosquitto` is the name given to the mqtt broker
+
+***
+
+
+## File locations 
+
+```
+openHAB application	        /usr/share/openhab2
+Additional add-on files	        /usr/share/openhab2/addons
+Site configuration	        /etc/openhab2
+Log files	                /var/log/openhab2
+Userdata like rrd4j databases	/var/lib/openhab2
+Service configuration	        /etc/default/openhab2
+```
+
+## View Log
+
+`tail -f /var/log/openhab2/openhab.log -f /var/log/openhab2/events.log`
+
+
+## Troubleshooting 
+
+karaf: KARAF_ETC is not valid: /var/lib/openhab2/etc
+
+
+
+
+
+
